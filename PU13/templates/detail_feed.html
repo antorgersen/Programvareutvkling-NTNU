@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block page_content %}
+    <!-- Creating detailed view of single blog post-->
+    <div class="card">
+        <div class="card-body my-2">
+            <h2 class="card-title">{{ feed_post.title }}</h2>
+            <!-- 'safe' enables us to render html if we enter it into a post-->
+            <p class="card-text">{{ feed_post.content|safe }}</p>
+        </div>
+        <div class="card-footer text-muted">Publisert {{ feed_post.date_published |date:"d. M. Y,H:i" }}
+            av {{ user.name }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

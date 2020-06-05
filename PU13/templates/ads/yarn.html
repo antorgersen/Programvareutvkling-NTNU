@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %} Annonser {% endblock %}
+
+{% block page_content %}
+
+    <h1 class="d-flex bd-highlight mb-2 pt-3 pb-3"> Annonser
+        {% if user.is_authenticated and user.is_Company %}
+            <a href="{% url 'create_yarn' %}" class="btn btn-success ml-5 p-2 bd-highlights">
+                Opprett annonse
+            </a>
+        {% endif %}
+    </h1>
+
+    <div class="d-flex bd-highlight">
+        <p class="bd-highligh">Under ser du alle garn-annonser bedrifter har lagt ut</p>
+    </div>
+
+    <div class="card-deck pt-3">
+        <div class="row">
+            {% for y in yarn %}
+                <div class="col-4 pb-5">
+                    <div class="card">
+                        <img src="{% static 'media/garnbed.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ y.yarn_name }}</h5>
+                            <p class="card-text">{{ y.description }}</p>
+                            <p class="card-text ">Nettsted:
+                                {{ y.url }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Annonse av: {{ y.created_by }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

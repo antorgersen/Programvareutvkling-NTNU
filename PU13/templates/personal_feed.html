@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href={% static "css/sidebar.css" %}>
+{% endblock stylesheet %}
+
+{% block page_content %}
+    {% if user.is_authenticated %}
+    <h1 class="pt-3 pb-3">{{ user.username }}' Feed</h1>
+    <!--Displaying success message after creating a post -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible " role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if posts %}
+        {% for post in posts %}
+
+            <div class="py-3">
+                <a href="{% url 'personal_feed:detail' post.slug %}" style="text-decoration: none;">
+                    <li class="list-group-item">{{ post }}</li>
+                </a>
+                <div class="card-footer text-muted">Publisert {{ feed_post.date_published }} av
+                    {{ user.username }}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+            <!-- Dette vises i tilfellet brukeren ikke har opprettet noen posts enda-->
+            <p> Hei {{ user.username }}, du har ikke noen innlegg enda. Opprett en
+                <a href="{% url 'personal_feed:create' %}">her.</a></p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

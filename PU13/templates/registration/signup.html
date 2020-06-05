@@ -1,0 +1,73 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %} Registrer {% endblock %}
+
+{% block body %}
+    <div class="container w-50 mt-4">
+        <h1 class="pt-3 pb-3"> Registrer </h1>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="bnavn"> Brukernavn: </label>
+                {% render_field form.username id="bnavn" class="form-control" %}
+                <div class="col-sm-20 text-danger mb-4">
+                    {% for error in form.username.errors %}
+                        <small> {{ error|escape }} </small>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="navn"> Navn: </label>
+                {% render_field form.name id="navn" class="form-control" %}
+                <div class="col-sm-20 text-danger mb-4">
+                    {% for error in form.name.errors %}
+                        <small> {{ error|escape }} </small>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="form-group pb-3">
+                <label for="bniva"> Brukernivå: </label>
+                {% render_field form.user_level id="bniva" class="custom-select" name="field" %}
+            </div>
+
+            <div class="form-group pb-3">
+                <div class="custom-control custom-checkbox">
+                    {% render_field form.is_Company type="checkbox" class="custom-control-input" id="defaultCheck1" value="True" %}
+                    <label class="custom-control-label" for="defaultCheck1">
+                        Huk av denne dersom du ønsker å registrere deg som en bedrift
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="pass">Passord:</label>
+                {% render_field form.password1 id="pass" class="form-control" %}
+                <div class="col-sm-20 text-danger mb-4">
+                    {% for error in form.password1.errors %}
+                        <small> {{ error|escape }} </small>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="pass2"> Skriv inn passordet på nytt: </label>
+                {% render_field form.password2 id="pass2" class="form-control" %}
+                <div class="col-sm-20 text-danger mb-5">
+                    {% for error in form.password2.errors %}
+                        <small>{{ error|escape }}</small>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Registrer</button>
+
+        </form>
+    </div>
+{% endblock %}

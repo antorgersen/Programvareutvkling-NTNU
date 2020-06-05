@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %} Utfordringer {% endblock %}
+
+{% block page_content %}
+                        <h1 class="pt-3 pb-3"> Utfordringer
+                            {% if user.is_authenticated and user.is_Company %}
+                                <a href="{% url 'create_challenge' %}" class="btn btn-success ml-5 p-2 bd-highlights">
+                                    Opprett utfordring
+                                </a>
+                            {% endif %}
+                        </h1>
+
+                        <p> Under finner du en liste med utfordringer som er arrangert av bedrifter. Meld deg på! </p>
+
+                        <table class="table table-hover mt-3">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Utfordring</th>
+                                <th scope="col">Anbefalt brukernivå</th>
+                                <th scope="col">Opprettet</th>
+                                <th scope="col">Arrangør</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for challenge in challenges %}
+                                <tr>
+                                    <th scope="row">{{ challenge.challenge_name }}</th>
+                                    <td>{{ challenge.rec_user_level }}</td>
+                                    <td>{{ challenge.created_at |date:"d. M. Y" }}</td>
+                                    <td>{{ challenge.created_by }}</td>
+                                    <td><a href="{% url 'challenge_detail' challenge.pk %}"
+                                           class="btn btn-primary">
+                                        Les mer
+                                    </a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+{% endblock %}

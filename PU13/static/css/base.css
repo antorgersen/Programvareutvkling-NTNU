@@ -1,0 +1,97 @@
+.navbar-custom{
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    display: compact;
+    margin: 0 auto;
+    text-align: center;/*
+    margin-top:360px;*/
+}
+.navbar-brand  {
+    height: 100%;
+    display: table;
+    float: left;
+}
+.navbar-brand a {
+    color: white;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: "Alegreya Sans SC";
+    font-size: 64px;
+    font-weight: 100;
+}
+.navbar-brand a span {
+    font-weight: 800;
+    color: #C5FBFA;
+}
+.navbar-nav {
+    float: right;
+    height: 100%;
+}
+.nav-item a{
+    height: 100%;
+    display: table;
+    float: left;
+    padding: 0px 20px;
+}
+.nav-item nav-link {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    color: white;
+    font-family: "Alegreya Sans SC";
+    font-size: 32px;
+}
+.nav-item a:last-child{
+    padding-right: 0;
+}
+
+
+
+
+
+     @media (max-width: 768px){
+        .right-column{
+            margin-left: 0;
+        }
+    }
+
+    @media (min-width: 768px){
+        .right-column{
+            margin-left: 20px;
+        }
+
+
+
+        .content{
+            padding: 20px 40px;
+
+        }
+    }
+
+    .blog-post-container{
+    background-color: #6c757d;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.create-post-bar{
+    background-color: #0c5460;
+    margin-bottom: 20px;
+}
+
+.left-column{
+    padding: 0;
+
+}
+
+.right-column{
+    padding: 0;
+
+}
+
+.post{
+    margin: 20px;
+}
+

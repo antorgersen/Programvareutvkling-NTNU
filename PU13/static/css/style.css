@@ -1,0 +1,25 @@
+body,html {
+    margin: 0px;
+    height: 100%;
+}
+
+#hero{
+    background-image: url(../media/bakgrunn.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    /*z-index: -10;*/
+}
+
+#hero-overlay{
+    position: absolute;
+    background-color: rgba(0,0,0,0);
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    /*z-index: -5;*/
+}

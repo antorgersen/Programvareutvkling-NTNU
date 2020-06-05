@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %} {{ challenges.challenge_name }} {% endblock %}
+
+{% block page_content %}
+    <h1 class="pt-3 pb-3"> {{ challenges.challenge_name }} </h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'media/garn.jpg' %}" class="img-fluid px-20 pt-3"
+                 alt="Responsive image">
+        </div>
+
+        <div class="col pt-3">
+            <h5>Utfordring</h5>
+            <p>{{ challenges.challenge_name }}</p>
+            <h5>Brukernivå</h5>
+            <p>{{ challenges.rec_user_level }}</p>
+            <h5>Beskrivelse</h5>
+            <p>{{ challenges.description }}</p>
+            <h5>Antall påmeldte</h5>
+            <p>{{ count }}</p>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">Meld på</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

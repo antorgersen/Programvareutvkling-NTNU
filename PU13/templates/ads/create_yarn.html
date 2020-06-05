@@ -1,0 +1,40 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %} Registrer {% endblock %}
+
+{% block page_content %}
+
+                        <h1 class="pt-3 pb-3"> Opprett annonse </h1>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+
+                            {% for field in form %}
+                                <div class="form-group">
+                                    {{ field.label_tag }}
+                                    {% render_field field class="form-control" %}
+
+                                    {% if field.help_text %}
+                                        <small class="form-text text-muted">
+                                            {{ field.help_text }}
+                                        </small>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+
+                            <button type="submit" class="btn btn-success"> Opprett</button>
+                        </form>
+
+{% endblock %}

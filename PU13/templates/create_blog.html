@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block page_content %}
+    <h1 class="pt-3 pb-3">Opprett et innlegg</h1>
+
+    <form method="post" enctype="multipart/form-data">
+
+        <!--Ensures encryption-->
+        {% csrf_token %}
+
+        <!--Using django builtin form and widget-tweak to render the fields dynamically-->
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }} {{ field.errors }}
+                {% render_field field class="form-control" %}
+            </div>
+        {% endfor %}
+
+        <!--Create submit button-->
+        <button class="btn btn-success" type="submit">Post innlegget</button>
+    </form>
+{% endblock %}
+
+
+
+
+

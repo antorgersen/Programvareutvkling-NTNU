@@ -1,0 +1,25 @@
+.strikk-profile img.strikk-image-lg {
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.strikk-image-profile {
+    margin: -90px 40px 0px 50px;
+    z-index: 9;
+    width: 15%;
+}
+
+@media (max-width: 700px) {
+
+    .strikk-profile-text > h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .strikk-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}
