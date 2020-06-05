@@ -19,7 +19,7 @@ created by companies.
 
 An example of the application:
 
-<img src="PU13/static/media/readme.png"  width="50%">
+<img src="PU13/static/media/PU13_static_media_readme.png"  width="50%">
 
 When logged in you will have access to a variety of functionalities.
 
